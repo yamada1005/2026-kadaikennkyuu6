@@ -45,4 +45,16 @@
 * [ ] 各コンポーネントを安全に配置する筐体（ケース）の設計・3Dプリント
 * [ ] 実機での消費電力および冷却温度の計測実験
 * [ ] （将来的な機能拡張）マイコンによる温度センサー連動の自動PWM制御
+        /* 日誌用の追加スタイリング */
+        h4 {
+            font-size: 10.5pt;
+            color: #0f172a;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        h4::before {
+            content: "⚡ ";
+            color: #ea580c;
+        }
 
