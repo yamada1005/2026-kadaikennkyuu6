@@ -1,47 +1,115 @@
-# 小型エアコン
-
-ペルチェ素子（Peltier element）を活用した、高出力な卓上サイズの小型エアコン開発プロジェクトです。
-
----
-
-## 基本的な仕様
-
-本プロジェクトは、大容量スイッチング電源と2系統の独立した回路構成により、安定した冷却性能と緻密な温度コントロールを両立する設計となっています。
-
-### 1. 電源システム
-* **メイン電源:** 12V 30A (360Wクラス) のスイッチング電源を採用。
-* **高出力対応:** 消費電力の大きいペルチェ素子2枚とファンを同時に、かつ安定して駆動できる電力を確保しています。
-
-### 2. 回路構成（2系統による熱マネジメント）
-効率的な排熱と、冷却能力の柔軟な調整を可能にするため、回路を以下の2系統に分離しています。
-
-* **系統A（常時排熱系）:**
-  * スイッチング電源からダイレクトに12Vを供給。
-  * **ラジエーターファン ×2** を常時フル稼働させることで、ペルチェ素子の高温面から発生する熱を滞りなく外部へ逃がし、熱飽和による冷却効率の低下を防ぎます。
-* **系統B（PWM調限制御系）:**
-  * **PWMコントローラー**（Power in / Motor out）を介して電力を供給。
-  * **ペルチェ素子（TEC1-12706）×2** を並列で接続し、ダイヤルや信号によって冷却能力（電力）を無段階で調整できる設計です。
-
-### 3. 使用コンポーネント（主要パーツ）
-* **ペルチェ素子:** 定番の「TEC1-12706」を2枚搭載し、卓上サイズながら高い冷却パフォーマンスを目指します。
-* **制御方式:** 電圧を直接下げるのではなく、PWM（パルス幅変調）制御を行うことで、エネルギー効率良くペルチェ素子の出力を管理します。
-
----
-
-## 主要パーツリスト
-
-回路図に基づいた基本コンポーネントの一覧です。
-
-| パーツ名 | 仕様・型番 | 数量 | 役割 |
-| :--- | :--- | :---: | :--- |
-| **スイッチング電源** | 12V 30A | 1 | システム全体（ACからDC12Vへ変換）の電力供給 |
-| **ペルチェ素子** | TEC1-12706 | 2 | 電流を流すことで冷気（および暖気）を生成 |
-| **ラジエーターファン** | 12V駆動ファン | 2 | 高温面ヒートシンクの強制空冷・排熱用 |
-| **PWMコントローラー** | DC仕様（Power/Motor端子） | 1 | ペルチェ素子への供給電力（冷却強度）の調整 |
-
----
-
-## 今後の開発予定（TODO）
-* [ ] 各コンポーネントを安全に配置する筐体（ケース）の設計・3Dプリント
-* [ ] 実機での消費電力および冷却温度の計測実験
-* [ ] （将来的な機能拡張）マイコンによる温度センサー連動の自動PWM制御
+body {
+    font-family: Arial, sans-serif;
+    color: #0f172a;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    padding: 20px;
+}
+.project-header {
+    background: linear-gradient(135deg, #020617 0%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 8px solid #ea580c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.project-tag {
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #38bdf8;
+    font-weight: bold;
+}
+.project-title {
+    font-size: 24pt;
+    margin: 10px 0;
+    font-weight: 800;
+}
+.project-subtitle {
+    font-size: 11.5pt;
+    color: #94a3b8;
+}
+h2 {
+    font-size: 15pt;
+    color: #0f172a;
+    border-left: 4px solid #1e3a8a;
+    padding-left: 10px;
+    margin-top: 30px;
+    border-bottom: 1px solid #cbd5e1;
+    padding-bottom: 4px;
+}
+h3 {
+    font-size: 12pt;
+    color: #1e3a8a;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.system-layout {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 15px 0;
+    margin: 20px 0;
+}
+.system-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 20px;
+    vertical-align: top;
+    width: 50%;
+}
+.sys-a { border-top: 4px solid #ef4444; }
+.sys-b { border-top: 4px solid #3b82f6; }
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 8.5pt;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.badge.red { background-color: #fee2e2; color: #991b1b; }
+.badge.blue { background-color: #dbeafe; color: #1e40af; }
+table.parts-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: #ffffff;
+}
+table.parts-list th {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    padding: 12px;
+    text-align: left;
+}
+table.parts-list td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+table.parts-list tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+pre {
+    background-color: #0f172a;
+    color: #38bdf8;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: monospace;
+    border-left: 4px solid #ea580c;
+}
+.math {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #1e3a8a;
+}
+.highlight-box {
+    background-color: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-left: 4px solid #ea580c;
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 25px;
+}
