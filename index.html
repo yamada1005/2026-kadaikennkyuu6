@@ -260,3 +260,127 @@
     </div>
 
 </body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>エアコン開発プロジェクト 仕様・研究概要書</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #0f172a; line-height: 1.6; background-color: #f5f7fa; padding: 20px; }
+        .project-header { background: linear-gradient(135deg, #020617 0%, #1e3a8a 100%); color: #ffffff; padding: 30px; border-radius: 8px; margin-bottom: 25px; border-left: 8px solid #ea580c; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); }
+        .project-tag { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 2px; color: #38bdf8; font-weight: bold; }
+        .project-title { font-size: 24pt; margin: 10px 0; font-weight: 800; }
+        .project-subtitle { font-size: 11.5pt; color: #94a3b8; }
+        h2 { font-size: 15pt; color: #0f172a; border-left: 4px solid #1e3a8a; padding-left: 10px; margin-top: 30px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; }
+        h3 { font-size: 12pt; color: #1e3a8a; margin-top: 18px; margin-bottom: 8px; font-weight: 600; }
+        .system-layout { width: 100%; border-collapse: separate; border-spacing: 15px 0; margin: 20px 0; }
+        .system-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 20px; vertical-align: top; width: 50%; }
+        .sys-a { border-top: 4px solid #ef4444; }
+        .sys-b { border-top: 4px solid #3b82f6; }
+        .badge { display: inline-block; padding: 2px 8px; font-size: 8.5pt; font-weight: bold; border-radius: 4px; margin-bottom: 10px; }
+        .badge.red { background-color: #fee2e2; color: #991b1b; }
+        .badge.blue { background-color: #dbeafe; color: #1e40af; }
+        table.parts-list { width: 100%; border-collapse: collapse; margin: 20px 0; background: #ffffff; }
+        table.parts-list th { background-color: #1e3a8a; color: #ffffff; padding: 12px; text-align: left; }
+        table.parts-list td { padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        table.parts-list tr:nth-child(even) { background-color: #f8fafc; }
+        pre { background-color: #0f172a; color: #38bdf8; padding: 15px; border-radius: 6px; font-family: monospace; border-left: 4px solid #ea580c; }
+        .math { font-family: 'Times New Roman', serif; font-style: italic; font-weight: bold; color: #1e3a8a; }
+        .highlight-box { background-color: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid #ea580c; padding: 15px; border-radius: 6px; margin-top: 25px; }
+    </style>
+</head>
+<body>
+
+    <div class="project-header">
+        <div class="project-tag">Electrical Engineering & Thermal Research Program</div>
+        <h1 class="project-title">エアコン</h1>
+        <div class="project-subtitle">ペルチェ素子（TEC1-12706）を用いた大容量独立2系統駆動システムの研究開発</div>
+    </div>
+
+    <h2>研究内容</h2>
+    <h3>1. 研究の目的・動機（社会的背景と意義）</h3>
+    <p>近年、夏季の車内等での『熱中症』が深刻な社会問題となっており、密閉空間向けの冷却対策が求められています。本研究では水冷式のような給水手間のないペルチェ式を採用し、手軽で速攻性と静音性に優れた持ち運び可能なエアコンの製作を目指します。</p>
+
+    <h3>2. 具体的な研究目標</h3>
+    <ul>
+        <li>熱電変換の電気的挙動および排熱特性の解明と理解。</li>
+        <li>PWM（パルス幅変調）制御回路の構築による、無段階の冷却強度（強さ設定）機能の実装。</li>
+        <li>回路露出を抑え、安全性と意匠性を両立した製品レベルのプロトタイプ製作。</li>
+    </ul>
+
+    <h3>3. 予想される研究結果・考察の視点</h3>
+    <p>周囲温度より5〜10℃程度の局所的な温度低下を期待する一方、放熱側から発生するジュール熱の処理が課題となるため、強制空冷による熱抵抗の極小化や空気の流れの最適化に焦点を当てて検証を行います。</p>
+
+    <h2>基本的な仕様</h2>
+    <p>定格出力 <span class="math">12V &times; 30A = 360W</span> の強力なDCスイッチング電源を主軸に据え、大電流下での確実な熱移動と排熱マネジメントを両立させています。</p>
+
+    <h3>1. 電源回路・給電容量</h3>
+    <ul>
+        <li>商用AC100VからDC12V 30Aへ変換する安定化電源。過渡的な電圧降下を防ぎ、安定した連続運転を可能にします。</li>
+    </ul>
+
+    <h3>2. 回路構成（独立2系統パワーライン・マネジメント）</h3>
+    <table class="system-layout">
+        <tr>
+            <td class="system-card sys-a">
+                <div class="badge red">系統A：常時強制空冷ライン</div>
+                <p><strong>ラジエーターファン &times; 2（直結駆動）</strong></p>
+                <p style="font-size: 8.5pt; color: #475569; margin: 0;">12V直結で常時最大排熱を行い、ジュール熱の逆流入による素子の熱破壊を物理的に防止します。</p>
+            </td>
+            <td class="system-card sys-b">
+                <div class="badge blue">系統B：PWM電力変調ライン</div>
+                <p><strong>ペルチェ素子 &times; 2（負荷制御駆動）</strong></p>
+                <p style="font-size: 8.5pt; color: #475569; margin: 0;">PWMコントローラーを介して2枚のTEC1-12706を並列接続し、デューティ比制御で冷却能力を無段階に調整します。</p>
+            </td>
+        </tr>
+    </table>
+
+    <h2>電気回路主要コンポーネント（BOM）</h2>
+    <table class="parts-list">
+        <thead>
+            <tr>
+                <th>コンポーネント名</th>
+                <th>仕様・定格型番</th>
+                <th>数量</th>
+                <th>電気的役割</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td><strong>スイッチング電源</strong></td><td>DC 12V 30A (360W)</td><td>1</td><td>AC100VからDC12Vへの変換および大電流安定供給</td>
+            <tr><td><strong>ペルチェ素子</strong></td><td>TEC1-12706</td><td>2</td><td>並列接続による熱電変換駆動（冷熱の生成）</td></tr>
+            <tr><td><strong>ラジエーターファン</strong></td><td>DC 12V 高静圧ファン</td><td>2</td><td>高温面の強制空冷および熱抵抗の極小化</td></tr>
+            <tr><td><strong>PWMコントローラー</strong></td><td>DC仕様大容量型</td><td>1</td><td>MOSFETによるペルチェ素子印加電圧の実効値制御</td></tr>
+        </tbody>
+    </table>
+
+    <h2>システム配線・結線トポロジー</h2>
+<pre>
+[AC Power In] ──► [12V 30A Switching PSU] 
+                      ├──► [System A] ──► Radiator Fans (x2)
+                      └──► [System B: PWM Ctrl] ──► Peltier Elements [TEC1-12706 x2 Parallel]
+</pre>
+
+    <h2>活動日誌</h2>
+    
+    <h3>■ 4月24日</h3>
+    <p>エアコンの基本設計となる電気回路図の作成を進めるとともに、熱電変換の主軸となるペルチェ素子の基礎特性や動作原理についての勉強会を行い、理解を深めました。</p>
+
+    <h3>■ 5月8日</h3>
+    <p>前回の基本設計を元に実際に調達すべき電子部品や資材の選定を行い、回路の構成内容や各部品の定格値についてさらに詳しく学習・検証を行いました。</p>
+
+    <h3>■ 5月15日</h3>
+    <p>選定した各コンポーネントの市場価格の調査を行い、予算内に収まる最適な購入先オンラインサイトやECショップの検索とリストアップを行いました。</p>
+
+    <h3>■ 6月5日</h3>
+    <p>これまでの調査内容や追記をまとめ、プロジェクトの進捗共有とドキュメント管理を円滑にするため、GitHubリポジトリのREADME作成に注力しました。</p>
+
+    <h3>■ 6月12日</h3>
+    <p>買い物リストを確定させるとともに12A超の大電流駆動に伴う配線材の選定や排熱異常時の保護・結露対策など、安全性の机上検証を行い、GitHubを最新状態に更新しました。</p>
+
+    <div class="highlight-box">
+        <strong>⚡ 電気科的考察ノート：</strong><br>
+        ペルチェ素子の発熱による外装の変形・融解を防ぐため、製作フェーズでは耐熱素材の選定を徹底し、結露による短絡（ショート）を防ぐ絶縁処理や過電流保護ヒューズの配置を重視してビルドを進めます。
+    </div>
+
+</body>
+</html>
