@@ -61,3 +61,135 @@ h2 {
 h3 {
     font-size: 12.5pt;
     color: #1e3a8a;
+    margin-top: 30px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+h3::before {
+    content: "■";
+    color: #f97316;
+    margin-right: 8px;
+    font-size: 10pt;
+}
+
+/* 2系統パワーラインの比較カード */
+.system-layout {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px 0;
+    margin: 25px -20px;
+}
+
+.system-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+    vertical-align: top;
+    width: 50%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+/* マウスホバーで少しだけ浮き上がる（研究発表での見やすさ対策） */
+.system-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.sys-a { border-top: 6px solid #ef4444; background: linear-gradient(to bottom, #fff5f5 0%, #ffffff 20%); }
+.sys-b { border-top: 6px solid #3b82f6; background: linear-gradient(to bottom, #eff6ff 0%, #ffffff 20%); }
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 9pt;
+    font-weight: 800;
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.badge.red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+.badge.blue { background-color: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+/* 実験パーツリスト（BOM）のテーブルデザイン */
+table.parts-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+table.parts-list th {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    padding: 14px;
+    text-align: left;
+    font-weight: 700;
+}
+
+table.parts-list td {
+    padding: 14px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 10pt;
+}
+
+table.parts-list tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+table.parts-list tr:hover td {
+    background-color: #f0fdf4; /* ホバー時にうっすら緑にハイライト */
+}
+
+/* 結線図（制御基板・プログラム画面風） */
+pre {
+    background-color: #020617;
+    color: #38bdf8;
+    padding: 18px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    border-left: 6px solid #f97316;
+    overflow-x: auto;
+}
+
+/* 定格・数式の強調表示 */
+.math {
+    font-family: 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #1e3a8a;
+    background-color: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 本文・リストの調整 */
+p {
+    margin-bottom: 16px;
+    color: #334155;
+}
+ul {
+    padding-left: 20px;
+    color: #334155;
+}
+li {
+    margin-bottom: 8px;
+}
+
+/* 研究のまとめ・考察（重要ノート枠） */
+.highlight-box {
+    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+    border: 1px solid #fed7aa;
+    border-left: 8px solid #f97316;
+    padding: 22px;
+    border-radius: 10px;
+    margin-top: 40px;
+
+}
