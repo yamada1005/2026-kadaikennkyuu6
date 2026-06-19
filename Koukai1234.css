@@ -1,77 +1,63 @@
-/* 全体のベース設定（近未来的なダーク＆ライトのハイブリッド） */
+/* 全体のベース設定（研究レポートとしての読みやすさを重視） */
 body {
-    font-family: 'Consolas', 'Segoe UI', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    color: #0f172a;
+    font-family: 'Helvetica Neue', Arial, 'Segoe UI', Meiryo, sans-serif;
+    color: #1e293b;
     line-height: 1.8;
     background-color: #f8fafc;
-    /* 背景にうっすらとハイテク感を出すドット模様を追加 */
+    /* レポート用紙や方眼紙を意識した薄いドット背景 */
     background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
     background-size: 20px 20px;
     padding: 40px;
 }
 
-/* ネオン風のグラデーションが輝く超豪華ヘッダー */
+/* 課題研究の表紙をイメージした重厚なヘッダー */
 .project-header {
-    background: linear-gradient(135deg, #020617 0%, #1e3a8a 40%, #0369a1 70%, #0d9488 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0369a1 100%);
     color: #ffffff;
-    padding: 40px;
-    border-radius: 16px;
+    padding: 35px 40px;
+    border-radius: 12px;
     margin-bottom: 40px;
-    border-left: 12px solid #f97316; /* 鮮やかなコッパーオレンジ */
-    /* 強めの立体的な影をつけて浮かび上がらせる */
-    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.25), 0 8px 10px -6px rgba(30, 58, 138, 0.25);
-    position: relative;
-    overflow: hidden;
-}
-
-/* ヘッダー背景にサイバー感を出す光の演出 */
-.project-header::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 60%);
-    pointer-events: none;
+    border-left: 10px solid #f97316; /* 電気・熱をイメージするオレンジ */
+    box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.2);
 }
 
 .project-tag {
-    font-size: 9.5pt;
+    font-size: 9pt;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #38bdf8; /* 発光感のある電磁ブルー */
-    font-weight: 900;
-    margin-bottom: 8px;
-    text-shadow: 0 0 8px rgba(56,189,248,0.6);
+    letter-spacing: 2.5px;
+    color: #38bdf8; /* 知的なエレクトリックブルー */
+    font-weight: 800;
+    margin-bottom: 6px;
 }
 
 .project-title {
-    font-size: 28pt;
+    font-size: 26pt;
     margin: 10px 0;
     font-weight: 900;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .project-subtitle {
-    font-size: 12.5pt;
-    color: #e2e8f0;
+    font-size: 12pt;
+    color: #cbd5e1;
     font-weight: 500;
-    border-top: 1px solid rgba(255,255,255,0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 10px;
     display: inline-block;
 }
 
-/* メイン見出し（インダストリアルな極太デザイン） */
+/* 研究章節の見出し（左側に太線、下に細線） */
 h2 {
-    font-size: 17pt;
+    font-size: 16pt;
     color: #0f172a;
     border-left: 6px solid #1e3a8a;
-    padding-left: 15px;
+    padding-left: 12px;
     margin-top: 45px;
     border-bottom: 2px solid #cbd5e1;
-    padding-bottom: 8px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
+    padding-bottom: 6px;
+    font-weight: 800;
 }
+
+/* 日付や小見出しの装飾 */
+h3 {
+    font-size: 12.5pt;
+    color: #1e3a8a;
