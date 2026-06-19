@@ -1,182 +1,77 @@
-/* 全体のベース設定 */
+/* 全体のベース設定（近未来的なダーク＆ライトのハイブリッド） */
 body {
-    font-family: 'Helvetica Neue', Arial, 'Segoe UI', Meiryo, sans-serif;
-    color: #1e293b;
-    line-height: 1.7;
-    background-color: #f1f5f9; /* 工業的な少し暗めのグレー背景 */
-    padding: 30px;
+    font-family: 'Consolas', 'Segoe UI', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+    color: #0f172a;
+    line-height: 1.8;
+    background-color: #f8fafc;
+    /* 背景にうっすらとハイテク感を出すドット模様を追加 */
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 20px 20px;
+    padding: 40px;
 }
 
-/* 制御盤をイメージした超豪華なヘッダー */
+/* ネオン風のグラデーションが輝く超豪華ヘッダー */
 .project-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0d9488 100%); /* 青からサイバーな緑へのグラデーション */
+    background: linear-gradient(135deg, #020617 0%, #1e3a8a 40%, #0369a1 70%, #0d9488 100%);
     color: #ffffff;
-    padding: 35px;
-    border-radius: 12px;
-    margin-bottom: 35px;
-    border-left: 10px solid #ea580c; /* 太い銅線オレンジのアクセント */
-    box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.3);
+    padding: 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    border-left: 12px solid #f97316; /* 鮮やかなコッパーオレンジ */
+    /* 強めの立体的な影をつけて浮かび上がらせる */
+    box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.25), 0 8px 10px -6px rgba(30, 58, 138, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ヘッダー背景にサイバー感を出す光の演出 */
+.project-header::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .project-tag {
-    font-size: 9pt;
+    font-size: 9.5pt;
     text-transform: uppercase;
-    letter-spacing: 2.5px;
-    color: #38bdf8; /* 明るい電磁ブルー */
-    font-weight: 800;
-    margin-bottom: 5px;
+    letter-spacing: 3px;
+    color: #38bdf8; /* 発光感のある電磁ブルー */
+    font-weight: 900;
+    margin-bottom: 8px;
+    text-shadow: 0 0 8px rgba(56,189,248,0.6);
 }
 
 .project-title {
-    font-size: 26pt;
+    font-size: 28pt;
     margin: 10px 0;
     font-weight: 900;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .project-subtitle {
-    font-size: 12pt;
-    color: #cbd5e1;
-    font-weight: 500;
-}
-
-/* 見出しの強化（電気科の配線風） */
-h2 {
-    font-size: 16pt;
-    color: #0f172a;
-    border-left: 5px solid #1e3a8a; /* 濃い青の極太線 */
-    padding-left: 12px;
-    margin-top: 40px;
-    border-bottom: 2px solid #cbd5e1;
-    padding-bottom: 6px;
-    font-weight: 800;
-}
-
-h3 {
     font-size: 12.5pt;
-    color: #1e3a8a;
-    margin-top: 25px;
-    margin-bottom: 12px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-}
-
-h3::before {
-    content: "■";
-    color: #ea580c; /* オレンジのドットマーク */
-    margin-right: 8px;
-    font-size: 10pt;
-}
-
-/* 2系統パワーラインの立体カード化 */
-.system-layout {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 18px 0;
-    margin: 25px -18px;
-}
-
-.system-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 24px;
-    vertical-align: top;
-    width: 50%;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-
-/* 系統ごとのテーマカラー強調 */
-.sys-a { border-top: 6px solid #ef4444; background: linear-gradient(to bottom, #fff5f5, #ffffff 20%); } /* 熱・冷却の赤 */
-.sys-b { border-top: 6px solid #3b82f6; background: linear-gradient(to bottom, #eff6ff, #ffffff 20%); } /* 電気・PWMの青 */
-
-.badge {
+    color: #e2e8f0;
+    font-weight: 500;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 10px;
     display: inline-block;
-    padding: 4px 10px;
-    font-size: 9pt;
-    font-weight: 800;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.badge.red { background-color: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-.badge.blue { background-color: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
-
-/* 部品表（BOM）をカラフルで見やすく */
-table.parts-list {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    background: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
-table.parts-list th {
-    background-color: #1e3a8a;
-    color: #ffffff;
-    padding: 14px;
-    text-align: left;
-    font-weight: 700;
-    font-size: 10pt;
+/* メイン見出し（インダストリアルな極太デザイン） */
+h2 {
+    font-size: 17pt;
+    color: #0f172a;
+    border-left: 6px solid #1e3a8a;
+    padding-left: 15px;
+    margin-top: 45px;
+    border-bottom: 2px solid #cbd5e1;
+    padding-bottom: 8px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
 }
-
-table.parts-list td {
-    padding: 14px;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 10pt;
-}
-
-table.parts-list tr:nth-child(even) {
-    background-color: #f8fafc; /* 行ごとに背景色を微変化させて見やすく */
-}
-
-table.parts-list td strong {
-    color: #1e3a8a;
-}
-
-/* 配線図（黒基板風サイバーデザイン） */
-pre {
-    background-color: #0f172a;
-    color: #38bdf8; /* 明るい水色光 */
-    padding: 18px;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    font-weight: bold;
-    border-left: 5px solid #ea580c;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-}
-
-/* 数式デザイン */
-.math {
-    font-family: 'Times New Roman', serif;
-    font-style: italic;
-    font-weight: bold;
-    color: #1e3a8a;
-    background-color: #e2e8f0;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* 活動日誌の箇条書きを見やすく */
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 8px;
-}
-
-/* 最下部の電気科考察ノート（警告灯風） */
-.highlight-box {
-    background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
-    border: 1px solid #fed7aa;
-    border-left: 6px solid #ea580c;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 35px;
-    box-shadow: 0 4px 6px -1px rgba(234, 88, 12, 0.05);
-}
-
